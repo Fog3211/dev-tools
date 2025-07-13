@@ -164,32 +164,34 @@
             </button>
           </div>
           
-          <div class="space-y-2">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             <div
               v-for="(card, index) in brandGroup.cards"
               :key="index"
               class="bg-gray-50 dark:bg-gray-800 rounded-md p-3 border-l-4"
               :class="getBrandColorClass(brandGroup.brand)"
             >
-              <div class="flex items-center justify-between">
+              <div class="flex items-start justify-between mb-2">
                 <div class="flex items-center space-x-2 min-w-0 flex-1">
                   <component :is="getBrandIcon(brandGroup.brand)" class="w-4 h-4 flex-shrink-0" />
-                  <div class="min-w-0 flex-1">
-                    <div class="font-bold text-base font-mono text-gray-900 dark:text-white mb-1">
-                      {{ formatCardNumber(card.number) }}
-                    </div>
-                    <div class="text-xs text-gray-600 dark:text-gray-400 font-mono">
-                      {{ card.displayName }} • CVV: {{ card.cvv }} • 有效期: {{ card.expiryDate }}
-                    </div>
+                  <div class="text-xs font-medium text-gray-600 dark:text-gray-400">
+                    {{ card.displayName }}
                   </div>
                 </div>
                 <button
                   @click="copyToClipboard(card.number)"
-                  class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 p-1 ml-2"
+                  class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 p-1"
                   :title="t('common.copy')"
                 >
                   <ClipboardDocumentIcon class="w-4 h-4" />
                 </button>
+              </div>
+              <div class="font-bold text-sm font-mono text-gray-900 dark:text-white mb-2">
+                {{ formatCardNumber(card.number) }}
+              </div>
+              <div class="text-xs text-gray-600 dark:text-gray-400 font-mono">
+                <div>CVV: {{ card.cvv }}</div>
+                <div>有效期: {{ card.expiryDate }}</div>
               </div>
             </div>
           </div>
