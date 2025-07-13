@@ -103,7 +103,8 @@ import {
   BarsArrowDownIcon,
   MapPinIcon,
   DocumentIcon,
-  ChartBarIcon
+  ChartBarIcon,
+  CreditCardIcon
 } from '@heroicons/vue/24/outline'
 
 // Composables
@@ -130,7 +131,8 @@ const categories = [
       { key: 'md5', path: '/md5', icon: FingerPrintIcon },
       { key: 'url', path: '/url', icon: LinkIcon },
       { key: 'jwt', path: '/jwt', icon: KeyIcon },
-      { key: 'uuid', path: '/uuid', icon: IdentificationIcon }
+      { key: 'uuid', path: '/uuid', icon: IdentificationIcon },
+      { key: 'creditCardGenerator', path: '/credit-card-generator', icon: CreditCardIcon }
     ]
   },
   {

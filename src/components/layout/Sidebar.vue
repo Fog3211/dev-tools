@@ -65,6 +65,11 @@
           <IdentificationIcon class="w-5 h-5 mr-3" />
           {{ t('tools.uuid') }}
         </router-link>
+        
+        <router-link to="/credit-card-generator" class="sidebar-link" :class="{ active: route.path === '/credit-card-generator' }">
+          <CreditCardIcon class="w-5 h-5 mr-3" />
+          {{ t('tools.creditCardGenerator') }}
+        </router-link>
       </div>
       
       <!-- Time Tools -->
@@ -171,7 +176,8 @@ import {
   DocumentIcon,
   ChartBarIcon,
   CommandLineIcon,
-  WrenchScrewdriverIcon
+  WrenchScrewdriverIcon,
+  CreditCardIcon
 } from '@heroicons/vue/24/outline'
 
 // Props

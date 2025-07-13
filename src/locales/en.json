@@ -15,6 +15,7 @@
     "url": "URL Tool",
     "curl": "CURL Filter",
     "curlBuilder": "cURL Builder",
+    "creditCardGenerator": "Credit Card Generator",
     "jwt": "JWT Tool",
     "uuid": "UUID Generator",
     "timestamp": "Timestamp Converter",
@@ -363,6 +364,56 @@
       "formPostDesc": "Submit form data",
       "deleteRequest": "DELETE Request",
       "deleteRequestDesc": "Delete a specific resource"
+    }
+  },
+  "creditCardGenerator": {
+    "description": "Generate valid credit card numbers for testing purposes with multiple brand support",
+    "warning": {
+      "title": "For Testing Purposes Only",
+      "description": "These generated numbers are for development and testing only. They should never be used for actual financial transactions."
+    },
+    "configuration": "Configuration",
+    "selectBrands": "Select Card Brands",
+    "selectAll": "Select All",
+    "selectNone": "Select None",
+    "selectDefault": "Default Selection",
+    "countPerBrand": "Cards per Brand",
+    "maxCards": "Maximum {max} cards per brand",
+    "outputFormat": "Output Format",
+    "formats": {
+      "formatted": "Formatted (with spaces)",
+      "numbersOnly": "Numbers Only",
+      "detailed": "Detailed View",
+      "json": "JSON Format",
+      "csv": "CSV Format"
+    },
+    "generate": "Generate Cards",
+    "totalCards": "Total Cards",
+    "selectedBrands": "Selected Brands",
+    "perBrand": "Per Brand",
+    "validCards": "Valid Cards",
+    "generatedCards": "Generated Credit Cards",
+    "cards": "cards",
+    "copiedCards": "Credit card numbers copied to clipboard",
+    "brandCardsCopied": "{brand} cards copied to clipboard",
+    "usageExamples": "Usage Examples",
+    "examples": {
+      "testing": {
+        "title": "Payment Testing",
+        "desc": "Common brands for payment gateway testing"
+      },
+      "global": {
+        "title": "Global Brands",
+        "desc": "Worldwide accepted credit cards"
+      },
+      "regional": {
+        "title": "Regional Cards",
+        "desc": "Regional and specialized cards"
+      },
+      "premium": {
+        "title": "Premium Cards",
+        "desc": "Premium and business cards"
+      }
     }
   },
   "colorConverter": {

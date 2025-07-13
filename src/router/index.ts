@@ -9,6 +9,7 @@ const Md5Tool = () => import('@/views/tools/Md5Tool.vue')
 const UrlTool = () => import('@/views/tools/UrlTool.vue')
 const CurlTool = () => import('@/views/tools/CurlTool.vue')
 const CurlBuilder = () => import('@/views/tools/CurlBuilder.vue')
+const CreditCardGenerator = () => import('@/views/tools/CreditCardGenerator.vue')
 const ColorConverter = () => import('@/views/tools/ColorConverter.vue')
 
 const routes: RouteRecordRaw[] = [
@@ -66,6 +67,14 @@ const routes: RouteRecordRaw[] = [
     component: CurlBuilder,
     meta: {
       title: 'cURL Builder'
+    }
+  },
+  {
+    path: '/credit-card-generator',
+    name: 'CreditCardGenerator',
+    component: CreditCardGenerator,
+    meta: {
+      title: 'Credit Card Generator'
     }
   },
   {

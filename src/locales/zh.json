@@ -15,6 +15,7 @@
     "url": "URL工具",
     "curl": "cURL过滤器", 
     "curlBuilder": "cURL构造器",
+    "creditCardGenerator": "信用卡生成器",
     "jwt": "JWT工具",
     "uuid": "UUID生成器",
     "timestamp": "时间戳转换",
@@ -363,6 +364,56 @@
       "formPostDesc": "提交表单数据",
       "deleteRequest": "DELETE请求",
       "deleteRequestDesc": "删除特定资源"
+    }
+  },
+  "creditCardGenerator": {
+    "description": "生成用于测试目的的有效信用卡号，支持多种品牌",
+    "warning": {
+      "title": "仅用于测试目的",
+      "description": "生成的卡号仅用于开发和测试，绝不应用于实际金融交易。"
+    },
+    "configuration": "配置选项",
+    "selectBrands": "选择卡片品牌",
+    "selectAll": "全选",
+    "selectNone": "全不选",
+    "selectDefault": "默认选择",
+    "countPerBrand": "每个品牌的卡片数量",
+    "maxCards": "每个品牌最多 {max} 张卡片",
+    "outputFormat": "输出格式",
+    "formats": {
+      "formatted": "格式化显示（带空格）",
+      "numbersOnly": "仅卡号",
+      "detailed": "详细视图",
+      "json": "JSON格式",
+      "csv": "CSV格式"
+    },
+    "generate": "生成卡片",
+    "totalCards": "总卡片数",
+    "selectedBrands": "已选品牌",
+    "perBrand": "每个品牌",
+    "validCards": "有效卡片",
+    "generatedCards": "生成的信用卡",
+    "cards": "张卡片",
+    "copiedCards": "信用卡号已复制到剪贴板",
+    "brandCardsCopied": "{brand} 卡片已复制到剪贴板",
+    "usageExamples": "使用示例",
+    "examples": {
+      "testing": {
+        "title": "支付测试",
+        "desc": "支付网关测试常用品牌"
+      },
+      "global": {
+        "title": "全球品牌",
+        "desc": "全球通用信用卡品牌"
+      },
+      "regional": {
+        "title": "区域卡片",
+        "desc": "区域性和专业卡片"
+      },
+      "premium": {
+        "title": "高端卡片",
+        "desc": "高端和商务卡片"
+      }
     }
   },
   "colorConverter": {
