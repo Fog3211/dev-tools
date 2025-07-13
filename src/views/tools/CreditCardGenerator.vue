@@ -10,7 +10,7 @@
       </p>
       
       <!-- Warning Notice -->
-      <div class="max-w-4xl mx-auto mt-4">
+      <div class="mt-4">
         <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">
           <div class="flex items-start space-x-3">
             <ExclamationTriangleIcon class="w-5 h-5 text-yellow-500 mt-0.5 flex-shrink-0" />
@@ -143,44 +143,7 @@
       </div>
     </div>
 
-    <!-- Statistics -->
-    <div v-if="generatedCards.length > 0" class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="card p-4 text-center">
-        <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">
-          {{ generatedCards.length }}
-        </div>
-        <div class="text-sm text-gray-600 dark:text-gray-400">
-          {{ t('creditCardGenerator.totalCards') }}
-        </div>
-      </div>
-      
-      <div class="card p-4 text-center">
-        <div class="text-2xl font-bold text-green-600 dark:text-green-400">
-          {{ selectedBrands.length }}
-        </div>
-        <div class="text-sm text-gray-600 dark:text-gray-400">
-          {{ t('creditCardGenerator.selectedBrands') }}
-        </div>
-      </div>
-      
-      <div class="card p-4 text-center">
-        <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">
-          {{ countPerBrand }}
-        </div>
-        <div class="text-sm text-gray-600 dark:text-gray-400">
-          {{ t('creditCardGenerator.perBrand') }}
-        </div>
-      </div>
-      
-      <div class="card p-4 text-center">
-        <div class="text-2xl font-bold text-orange-600 dark:text-orange-400">
-          100%
-        </div>
-        <div class="text-sm text-gray-600 dark:text-gray-400">
-          {{ t('creditCardGenerator.validCards') }}
-        </div>
-      </div>
-    </div>
+
 
     <!-- Generated Results -->
     <div v-if="generatedCards.length > 0" class="space-y-4">
@@ -214,23 +177,36 @@
             </button>
           </div>
           
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div class="space-y-3">
             <div
               v-for="(card, index) in brandGroup.cards"
               :key="index"
-              class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 font-mono text-sm"
+              class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 border-l-4"
+              :class="getBrandColorClass(brandGroup.brand)"
             >
-              <div class="flex items-center justify-between mb-1">
-                <span class="font-semibold">{{ formatCardNumber(card.number) }}</span>
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center space-x-3">
+                  <component :is="getBrandIcon(brandGroup.brand)" class="w-6 h-6" />
+                  <div>
+                    <div class="font-bold text-lg font-mono text-gray-900 dark:text-white">
+                      {{ formatCardNumber(card.number) }}
+                    </div>
+                    <div class="text-sm font-medium text-gray-600 dark:text-gray-400">
+                      {{ card.displayName }}
+                    </div>
+                  </div>
+                </div>
                 <button
                   @click="copyToClipboard(card.number)"
-                  class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                  class="btn btn-ghost text-xs"
+                  :title="t('common.copy')"
                 >
                   <ClipboardDocumentIcon class="w-4 h-4" />
                 </button>
               </div>
-              <div class="text-xs text-gray-600 dark:text-gray-400">
-                CVV: {{ card.cvv }} | Exp: {{ card.expiryDate }}
+              <div class="text-sm text-gray-600 dark:text-gray-400 font-mono">
+                <span class="mr-4">CVV: {{ card.cvv }}</span>
+                <span>有效期: {{ card.expiryDate }}</span>
               </div>
             </div>
           </div>
@@ -468,6 +444,19 @@ const getBrandIcon = (brand: string) => {
     unionpay: GlobeAsiaAustraliaIcon
   }
   return icons[brand] || CreditCardIcon
+}
+
+const getBrandColorClass = (brand: string) => {
+  const colors: Record<string, string> = {
+    visa: 'border-l-blue-500',
+    mastercard: 'border-l-red-500',
+    jcb: 'border-l-green-500',
+    discover: 'border-l-orange-500',
+    amex: 'border-l-purple-500',
+    diners: 'border-l-pink-500',
+    unionpay: 'border-l-yellow-500'
+  }
+  return colors[brand] || 'border-l-gray-500'
 }
 
 const copyBrandCards = async (brand: string) => {
