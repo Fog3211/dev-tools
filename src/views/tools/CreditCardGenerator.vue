@@ -8,19 +8,6 @@
       <p class="text-gray-600 dark:text-gray-400">
         {{ t('creditCardGenerator.description') }}
       </p>
-      
-      <!-- Warning Notice -->
-      <div class="mt-4">
-        <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">
-          <div class="flex items-start space-x-3">
-            <ExclamationTriangleIcon class="w-5 h-5 text-yellow-500 mt-0.5 flex-shrink-0" />
-            <div class="text-sm text-yellow-800 dark:text-yellow-200">
-              <p class="font-medium mb-1">{{ t('creditCardGenerator.warning.title') }}</p>
-              <p>{{ t('creditCardGenerator.warning.description') }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Configuration -->
@@ -152,61 +139,57 @@
       </h3>
       
       <!-- Results by Brand -->
-      <div v-if="outputFormat === 'detailed'" class="space-y-4">
+      <div v-if="outputFormat === 'detailed'" class="space-y-3">
         <div
           v-for="brandGroup in groupedCards"
           :key="brandGroup.brand"
-          class="card p-4"
+          class="card p-3"
         >
-          <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center justify-between mb-2">
             <div class="flex items-center space-x-2">
-              <component :is="getBrandIcon(brandGroup.brand)" class="w-5 h-5" />
-              <h4 class="font-semibold text-gray-900 dark:text-white">
+              <component :is="getBrandIcon(brandGroup.brand)" class="w-4 h-4" />
+              <h4 class="font-semibold text-gray-900 dark:text-white text-sm">
                 {{ brandGroup.displayName }}
               </h4>
-              <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded text-xs">
+              <span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded text-xs">
                 {{ brandGroup.cards.length }} {{ t('creditCardGenerator.cards') }}
               </span>
             </div>
             <button
               @click="copyBrandCards(brandGroup.brand)"
-              class="btn btn-ghost text-xs"
+              class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 text-xs flex items-center space-x-1"
             >
-              <ClipboardDocumentIcon class="w-4 h-4 mr-1" />
-              {{ t('common.copy') }}
+              <ClipboardDocumentIcon class="w-3 h-3" />
+              <span>{{ t('common.copy') }}</span>
             </button>
           </div>
           
-          <div class="space-y-3">
+          <div class="space-y-2">
             <div
               v-for="(card, index) in brandGroup.cards"
               :key="index"
-              class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 border-l-4"
+              class="bg-gray-50 dark:bg-gray-800 rounded-md p-3 border-l-4"
               :class="getBrandColorClass(brandGroup.brand)"
             >
-              <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center space-x-3">
-                  <component :is="getBrandIcon(brandGroup.brand)" class="w-6 h-6" />
-                  <div>
-                    <div class="font-bold text-lg font-mono text-gray-900 dark:text-white">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2 min-w-0 flex-1">
+                  <component :is="getBrandIcon(brandGroup.brand)" class="w-4 h-4 flex-shrink-0" />
+                  <div class="min-w-0 flex-1">
+                    <div class="font-bold text-base font-mono text-gray-900 dark:text-white mb-1">
                       {{ formatCardNumber(card.number) }}
                     </div>
-                    <div class="text-sm font-medium text-gray-600 dark:text-gray-400">
-                      {{ card.displayName }}
+                    <div class="text-xs text-gray-600 dark:text-gray-400 font-mono">
+                      {{ card.displayName }} • CVV: {{ card.cvv }} • 有效期: {{ card.expiryDate }}
                     </div>
                   </div>
                 </div>
                 <button
                   @click="copyToClipboard(card.number)"
-                  class="btn btn-ghost text-xs"
+                  class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 p-1 ml-2"
                   :title="t('common.copy')"
                 >
                   <ClipboardDocumentIcon class="w-4 h-4" />
                 </button>
-              </div>
-              <div class="text-sm text-gray-600 dark:text-gray-400 font-mono">
-                <span class="mr-4">CVV: {{ card.cvv }}</span>
-                <span>有效期: {{ card.expiryDate }}</span>
               </div>
             </div>
           </div>
@@ -274,7 +257,6 @@ import {
   CreditCardIcon,
   TrashIcon,
   ClipboardDocumentIcon,
-  ExclamationTriangleIcon,
   BanknotesIcon,
   CircleStackIcon,
   IdentificationIcon,
@@ -297,7 +279,7 @@ interface GeneratedCard {
 // State
 const selectedBrands = ref<string[]>(['visa', 'mastercard', 'jcb', 'discover'])
 const countPerBrand = ref(5)
-const outputFormat = ref('formatted')
+const outputFormat = ref('detailed')
 const generatedCards = ref<GeneratedCard[]>([])
 
 // Available brands
