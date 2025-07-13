@@ -51,6 +51,11 @@
           {{ t('tools.curl') }}
         </router-link>
         
+        <router-link to="/curl-builder" class="sidebar-link" :class="{ active: route.path === '/curl-builder' }">
+          <WrenchScrewdriverIcon class="w-5 h-5 mr-3" />
+          {{ t('tools.curlBuilder') }}
+        </router-link>
+        
         <router-link to="/jwt" class="sidebar-link" :class="{ active: route.path === '/jwt' }">
           <KeyIcon class="w-5 h-5 mr-3" />
           {{ t('tools.jwt') }}
@@ -165,7 +170,8 @@ import {
   MapPinIcon,
   DocumentIcon,
   ChartBarIcon,
-  CommandLineIcon
+  CommandLineIcon,
+  WrenchScrewdriverIcon
 } from '@heroicons/vue/24/outline'
 
 // Props

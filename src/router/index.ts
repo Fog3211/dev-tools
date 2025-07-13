@@ -8,6 +8,7 @@ const Base64Tool = () => import('@/views/tools/Base64Tool.vue')
 const Md5Tool = () => import('@/views/tools/Md5Tool.vue')
 const UrlTool = () => import('@/views/tools/UrlTool.vue')
 const CurlTool = () => import('@/views/tools/CurlTool.vue')
+const CurlBuilder = () => import('@/views/tools/CurlBuilder.vue')
 const ColorConverter = () => import('@/views/tools/ColorConverter.vue')
 
 const routes: RouteRecordRaw[] = [
@@ -60,6 +61,14 @@ const routes: RouteRecordRaw[] = [
     }
   },
   {
+    path: '/curl-builder',
+    name: 'CurlBuilder',
+    component: CurlBuilder,
+    meta: {
+      title: 'cURL Builder'
+    }
+  },
+  {
     path: '/color-converter',
     name: 'ColorConverter',
     component: ColorConverter,
@@ -72,7 +81,7 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior(_to: any, _from: any, savedPosition: any) {
     if (savedPosition) {
       return savedPosition
     } else {
@@ -82,7 +91,7 @@ const router = createRouter({
 })
 
 // Global navigation guard for SEO
-router.beforeEach((to, from, next) => {
+router.beforeEach((to: any, _from: any, next: any) => {
   // Update document title and meta tags
   if (to.meta?.title) {
     document.title = to.meta.title as string

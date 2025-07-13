@@ -53,7 +53,7 @@
             {{ t('common.input') }}
           </h2>
           <button
-            @click="pasteFromClipboard"
+            @click="handlePaste"
             class="btn btn-ghost btn-sm"
           >
             {{ t('common.paste') }}
@@ -77,34 +77,17 @@
       
       <!-- Output -->
       <div class="space-y-4">
-        <div class="flex items-center justify-between">
-          <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
-            {{ t('common.output') }}
-          </h2>
-          <button
-            @click="copyToClipboard"
-            class="btn btn-ghost btn-sm"
-            :disabled="!outputJson"
-          >
-            {{ t('common.copy') }}
-          </button>
-        </div>
-        
-        <div class="relative">
-          <div
-            v-if="outputJson"
-            class="code-block h-96 overflow-auto"
-            v-html="highlightedJson"
-          ></div>
-          <div
-            v-else
-            class="h-96 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg flex items-center justify-center"
-          >
-            <p class="text-gray-500 dark:text-gray-400">
-              {{ t('json.formatted') }}
-            </p>
-          </div>
-        </div>
+        <CodeBlock
+          :content="outputJson"
+          language="json"
+          :title="t('common.output')"
+          height="xl"
+          :placeholder="t('json.formatted')"
+          :show-copy="true"
+          :show-copy-text="true"
+          :show-stats="true"
+          :copy-success-message="t('json.copiedMessage', 'JSON copied to clipboard')"
+        />
       </div>
     </div>
     
@@ -152,11 +135,8 @@ import { useI18n } from 'vue-i18n'
 import { useNotificationsStore } from '@/stores/notifications'
 import { CheckCircleIcon, XCircleIcon } from '@heroicons/vue/24/outline'
 import JsonTree from '@/components/common/JsonTree.vue'
-import hljs from 'highlight.js/lib/core'
-import json from 'highlight.js/lib/languages/json'
-
-// Register JSON language
-hljs.registerLanguage('json', json)
+import CodeBlock from '@/components/common/CodeBlock.vue'
+import { useCopyToClipboard } from '@/composables/useCopyToClipboard'
 
 // Composables
 const { t } = useI18n()
@@ -171,11 +151,8 @@ const validationStatus = ref<{
 } | null>(null)
 const jsonTree = ref<any>(null)
 
-// Computed
-const highlightedJson = computed(() => {
-  if (!outputJson.value) return ''
-  return hljs.highlight(outputJson.value, { language: 'json' }).value
-})
+// Composables
+const { pasteFromClipboard, copyToClipboard } = useCopyToClipboard()
 
 // Methods
 const formatJson = () => {
@@ -232,24 +209,16 @@ const clearAll = () => {
   jsonTree.value = null
 }
 
-const pasteFromClipboard = async () => {
-  try {
-    const text = await navigator.clipboard.readText()
+const handlePaste = async () => {
+  const text = await pasteFromClipboard()
+  if (text) {
     inputJson.value = text
-    notifications.showSuccess(t('common.copied'))
-  } catch (error) {
-    notifications.showError(t('common.error'), 'Failed to paste from clipboard')
   }
 }
 
-const copyToClipboard = async () => {
-  if (!outputJson.value) return
-  
-  try {
-    await navigator.clipboard.writeText(outputJson.value)
-    notifications.showSuccess(t('common.copied'))
-  } catch (error) {
-    notifications.showError(t('common.error'), 'Failed to copy to clipboard')
+const handleCopy = async () => {
+  if (outputJson.value) {
+    await copyToClipboard(outputJson.value, t('json.copiedMessage', 'JSON copied to clipboard'))
   }
 }
 

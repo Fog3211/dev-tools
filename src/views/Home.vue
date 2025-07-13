@@ -37,7 +37,7 @@
     <!-- Tool Categories -->
     <div class="space-y-8">
       <h2 class="text-3xl font-bold text-gray-900 dark:text-white text-center">
-        Tool Categories
+        {{ t('home.toolCategories') }}
       </h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
