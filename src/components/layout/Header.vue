@@ -28,7 +28,7 @@
             type="button"
             aria-label="Switch language"
           >
-            <span class="text-lg leading-none">{{ currentLanguageInfo?.flag }}</span>
+            <LanguageIcon class="w-5 h-5" />
             <ChevronDownIcon class="w-4 h-4 ml-1" />
           </button>
           
@@ -87,7 +87,8 @@ import {
   SunIcon,
   MoonIcon,
   Cog6ToothIcon,
-  ChevronDownIcon
+  ChevronDownIcon,
+  LanguageIcon
 } from '@heroicons/vue/24/outline'
 
 // Emits
