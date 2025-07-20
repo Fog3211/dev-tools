@@ -121,6 +121,11 @@
           <BarsArrowDownIcon class="w-5 h-5 mr-3" />
           {{ t('tools.barcode') }}
         </router-link>
+        
+        <router-link to="/image-upload-cdn" class="sidebar-link" :class="{ active: route.path === '/image-upload-cdn' }">
+          <CloudArrowUpIcon class="w-5 h-5 mr-3" />
+          {{ t('tools.imageUploadCdn') }}
+        </router-link>
       </div>
       
       <!-- Location Tools -->
@@ -177,7 +182,8 @@ import {
   ChartBarIcon,
   CommandLineIcon,
   WrenchScrewdriverIcon,
-  CreditCardIcon
+  CreditCardIcon,
+  CloudArrowUpIcon
 } from '@heroicons/vue/24/outline'
 
 // Props

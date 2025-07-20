@@ -26,7 +26,8 @@
     "barcode": "条形码生成",
     "geohash": "GeoHash工具",
     "markdown": "Markdown预览",
-    "mermaid": "Mermaid图表"
+    "mermaid": "Mermaid图表",
+    "imageUploadCdn": "图片上传CDN"
   },
   "common": {
     "input": "输入",
@@ -68,7 +69,9 @@
     "open": "打开",
     "save": "保存",
     "export": "导出",
-    "import": "导入"
+    "import": "导入",
+    "remove": "移除",
+    "selectedFiles": "已选择文件"
   },
   "home": {
     "title": "开发者工具集",
@@ -435,6 +438,42 @@
     "copiedMessage": "颜色值已复制到剪贴板",
     "errors": {
       "invalidColor": "无效的颜色格式，请检查您的输入。"
+    }
+  },
+  "imageUploadCdn": {
+    "title": "图片上传CDN",
+    "description": "上传图片并获取CDN链接，支持拖拽、粘贴和文件选择",
+    "uploadArea": "上传区域",
+    "dragDropText": "拖拽图片到这里，或点击选择文件",
+    "pasteText": "您也可以从剪贴板粘贴图片 (Ctrl+V)",
+    "supportedFormats": "支持格式：JPG、PNG、GIF、WebP",
+    "maxFileSize": "最大文件大小：10MB",
+    "selectFiles": "选择图片",
+    "uploadButton": "上传到CDN",
+    "uploading": "上传中...",
+    "uploadSuccess": "上传成功！",
+    "cdnUrl": "CDN地址",
+    "copyUrl": "复制链接",
+    "downloadImage": "下载图片",
+    "imagePreview": "图片预览",
+    "fileInfo": "文件信息",
+    "originalSize": "原始大小",
+    "compressedSize": "压缩后大小",
+    "dimensions": "尺寸",
+    "format": "格式",
+    "uploadHistory": "上传历史",
+    "clearHistory": "清空历史",
+    "noHistory": "暂无上传历史",
+    "errors": {
+      "invalidFileType": "无效的文件类型，请选择图片文件。",
+      "fileTooLarge": "文件过大，最大支持10MB。",
+      "uploadFailed": "上传失败，请重试。",
+      "networkError": "网络错误，请检查您的连接。",
+      "pasteNotSupported": "此浏览器不支持粘贴功能。"
+    },
+    "warnings": {
+      "compressionApplied": "图片已被压缩以减少文件大小。",
+      "dimensionsReduced": "图片尺寸已调整以符合大小限制。"
     }
   },
   "footer": {

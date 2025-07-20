@@ -26,7 +26,8 @@
     "barcode": "Barcode Generator",
     "geohash": "GeoHash Tool",
     "markdown": "Markdown Preview",
-    "mermaid": "Mermaid Diagram"
+    "mermaid": "Mermaid Diagram",
+    "imageUploadCdn": "Image Upload CDN"
   },
   "common": {
     "input": "Input",
@@ -68,7 +69,9 @@
     "open": "Open",
     "save": "Save",
     "export": "Export",
-    "import": "Import"
+    "import": "Import",
+    "remove": "Remove",
+    "selectedFiles": "Selected Files"
   },
   "home": {
     "title": "Developer Tools Collection",
@@ -435,6 +438,42 @@
     "copiedMessage": "Color value copied to clipboard",
     "errors": {
       "invalidColor": "Invalid color format. Please check your input."
+    }
+  },
+  "imageUploadCdn": {
+    "title": "Image Upload CDN",
+    "description": "Upload images and get CDN links with drag & drop, paste, and file selection support",
+    "uploadArea": "Upload Area",
+    "dragDropText": "Drag and drop images here, or click to select files",
+    "pasteText": "You can also paste images from clipboard (Ctrl+V)",
+    "supportedFormats": "Supported formats: JPG, PNG, GIF, WebP",
+    "maxFileSize": "Maximum file size: 10MB",
+    "selectFiles": "Select Images",
+    "uploadButton": "Upload to CDN",
+    "uploading": "Uploading...",
+    "uploadSuccess": "Upload successful!",
+    "cdnUrl": "CDN URL",
+    "copyUrl": "Copy URL",
+    "downloadImage": "Download Image",
+    "imagePreview": "Image Preview",
+    "fileInfo": "File Information",
+    "originalSize": "Original Size",
+    "compressedSize": "Compressed Size",
+    "dimensions": "Dimensions",
+    "format": "Format",
+    "uploadHistory": "Upload History",
+    "clearHistory": "Clear History",
+    "noHistory": "No upload history",
+    "errors": {
+      "invalidFileType": "Invalid file type. Please select an image file.",
+      "fileTooLarge": "File is too large. Maximum size is 10MB.",
+      "uploadFailed": "Upload failed. Please try again.",
+      "networkError": "Network error. Please check your connection.",
+      "pasteNotSupported": "Paste is not supported in this browser."
+    },
+    "warnings": {
+      "compressionApplied": "Image was compressed to reduce file size.",
+      "dimensionsReduced": "Image dimensions were reduced to meet size limits."
     }
   },
   "footer": {

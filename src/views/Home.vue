@@ -104,7 +104,8 @@ import {
   MapPinIcon,
   DocumentIcon,
   ChartBarIcon,
-  CreditCardIcon
+  CreditCardIcon,
+  CloudArrowUpIcon
 } from '@heroicons/vue/24/outline'
 
 // Composables
@@ -156,7 +157,8 @@ const categories = [
     tools: [
       { key: 'svg', path: '/svg', icon: PhotoIcon },
       { key: 'qrCode', path: '/qr-code', icon: QrCodeIcon },
-      { key: 'barcode', path: '/barcode', icon: BarsArrowDownIcon }
+      { key: 'barcode', path: '/barcode', icon: BarsArrowDownIcon },
+      { key: 'imageUploadCdn', path: '/image-upload-cdn', icon: CloudArrowUpIcon }
     ]
   },
   {

@@ -11,6 +11,7 @@ const CurlTool = () => import('@/views/tools/CurlTool.vue')
 const CurlBuilder = () => import('@/views/tools/CurlBuilder.vue')
 const CreditCardGenerator = () => import('@/views/tools/CreditCardGenerator.vue')
 const ColorConverter = () => import('@/views/tools/ColorConverter.vue')
+const ImageUploadCdn = () => import('@/views/tools/ImageUploadCdn.vue')
 
 const routes: RouteRecordRaw[] = [
   {
@@ -83,6 +84,14 @@ const routes: RouteRecordRaw[] = [
     component: ColorConverter,
     meta: {
       title: 'Color Converter'
+    }
+  },
+  {
+    path: '/image-upload-cdn',
+    name: 'ImageUploadCdn',
+    component: ImageUploadCdn,
+    meta: {
+      title: 'Image Upload CDN'
     }
   }
 ]
